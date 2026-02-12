@@ -1,0 +1,27 @@
+{
+    "description": "Send configured urls to a different browser via Native Messaging",
+    "manifest_version": 2,
+    "name": "Alternate Browser",
+    "version": "0.1",
+    "permissions": [
+        "<all_urls>",
+        "nativeMessaging",
+        "storage",
+        "webRequest",
+        "webRequestBlocking"
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "alternatebrowser@thomasnardone.net",
+            "strict_min_version": "58.0"
+        }
+    },
+    "options_ui": {
+        "page": "options.html"
+    }
+}

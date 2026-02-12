@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="stylesheet" href="options.css" />
+</head>
+
+<body>
+  <div class="options-form">
+    <div class="url-title">
+      <h1>External URL Patterns <a
+        href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Match_patterns"
+        target="_blank">(?)</a></h1>
+    </div>
+    <div class="url-form">
+      <div class="url-input">
+        <input type="url" id="patternInput" class="url-input__field" />
+        <button type="button" id="addPatternButton" class="url-input__action btn--big">Add</button>
+      </div>
+      <div class="pattern-list">
+        <select id="patternList" class="pattern-list__select" multiple></select>
+        <button id="removePatternsButton" class="pattern-list__action btn--big">Delete Selected</button>
+      </div>
+    </div>
+    <div class="button-panel">
+      <button id="saveButton" class="button-panel__action btn--big" disabled>Save</button>
+      <button id="resetButton" class="button-panel__action btn--big">Reset</button>
+      <button id="defaultsButton" class="button-panel__action btn--big">Restore Defaults</button>
+    </div>
+    <div class="error-panel">
+      <p id="errorLabel" class="error-label"></p>
+    </div>
+  </div>
+  <script src="options.js"></script>
+</body>
+
+</html>
