@@ -19,7 +19,7 @@ async function loadOptions(loadDefaultsOnError) {
   try {
     patterns = await browser.storage.local.get('url_patterns');
     if (patterns && Array.isArray(patterns['url_patterns']) && patterns['url_patterns'].length > 0) {
-      setPatterns(patterns);
+      setPatterns(patterns['url_patterns']);
       resetUI("reset");
     } else {
       loadDefaults();
