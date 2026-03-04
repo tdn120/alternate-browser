@@ -76,15 +76,32 @@ function addPatternViaKeyboard(event) {
 }
 
 function addPattern(event) {
-  const patternSelector = document.querySelector("#patternList");
   const newPattern = document.querySelector("#patternInput").value;
+
+  // validate url
   try {
-    new URLPattern(newPattern); // validate - throws if invalid pattern
-    patternSelector.add(createOption(newPattern));
-    resetUI("add");
+    new URLPattern(newPattern); // throws if invalid pattern
   } catch(error) {
     document.querySelector("#errorLabel").innerText = `Invalid pattern! Please check the documentation.`;
+    return;
   }
+
+  const patternSelector = document.querySelector("#patternList");
+  let before = null;
+  
+  // find position in list
+  for (i = 0; i < patternSelector.options.length; i++) {
+    const nextItem = patternSelector.item(i).value;
+    if (newPattern === nextItem) {
+      return; // duplicate entry
+    } 
+    if (newPattern < nextItem) {
+      before = i;
+      break;
+    }
+  }
+  patternSelector.add(createOption(newPattern), before);
+  resetUI("add");
 }
 
 function removePatterns(event) {
@@ -102,6 +119,7 @@ function setPatterns(patterns) {
   for (i = patternSelector.options.length - 1; i > -1; i--) {
     patternSelector.remove(i);
   }
+  patterns.sort();
   patterns.forEach(pattern => {
     patternSelector.add(createOption(pattern));
   });
