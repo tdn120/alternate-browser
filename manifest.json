@@ -18,7 +18,7 @@
     "browser_specific_settings": {
         "gecko": {
             "id": "alternatebrowser@thomasnardone.net",
-            "strict_min_version": "58.0"
+            "strict_min_version": "142.0"
         }
     },
     "options_ui": {

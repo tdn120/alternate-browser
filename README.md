@@ -1,5 +1,10 @@
 # alternate-browser
-Browser extension to send certain urls to an alternative browser.
+Browser extension to send certain urls to a different browser (or script).
+
+## Motivation
+This extension allows you to define patterns for websites/urls that you want to send to another browser.  It's set up in a generic way, but provides default values geared towards a specific use case - sending Google-related URLs to Google's browser (Chrome) for optimal functionality.
+
+Having this directly in a Firefox extension allows you to catch when webpages (or referral links) redirect you to another website, which would normally keep you in the same browser.
 
 ## Set Up
 You need to set up the browser you want to open (via script) when a url matches one of the configured patterns.
@@ -43,4 +48,4 @@ Create a config file at `/usr/lib64/mozilla/native-messaging-hosts/firefox_to_ch
 }
 </pre>
 
-If everything is configured properly, the next time you navigate or click on a link to a matching url, your tab should remain blank in Firefox, and the url should launch in your alternative browser.
+If everything is configured properly, the next time you navigate or click on a link to a matching url, your tab should remain blank in Firefox, and the url should launch in your alternate browser.
