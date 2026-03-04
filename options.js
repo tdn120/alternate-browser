@@ -78,8 +78,13 @@ function addPatternViaKeyboard(event) {
 function addPattern(event) {
   const patternSelector = document.querySelector("#patternList");
   const newPattern = document.querySelector("#patternInput").value;
-  patternSelector.add(createOption(newPattern));
-  resetUI("add");
+  try {
+    new URLPattern(newPattern); // validate - throws if invalid pattern
+    patternSelector.add(createOption(newPattern));
+    resetUI("add");
+  } catch(error) {
+    document.querySelector("#errorLabel").innerText = `Invalid pattern! Please check the documentation.`;
+  }
 }
 
 function removePatterns(event) {
@@ -100,6 +105,30 @@ function setPatterns(patterns) {
   patterns.forEach(pattern => {
     patternSelector.add(createOption(pattern));
   });
+}
+
+function testUrlViaKeyboard(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    testUrl(event);
+  }
+}
+
+function testUrl(event) {
+  const patternSelector = document.querySelector("#patternList");
+  const testUrl = document.querySelector("#urlInput").value;
+  const resultLabel = document.querySelector("#testResult");
+  let matched = false;
+  for (const pattern of patternSelector.options) {
+    if (new URLPattern(pattern.value).test(testUrl)) {
+      resultLabel.innerText = `URL matched: ${pattern.value}`;
+      matched = true;
+      break;
+    }
+  }
+  if (!matched) {
+    resultLabel.innerText = "URL did not match.";
+  }
 }
 
 function createOption(pattern) {
@@ -130,3 +159,5 @@ document.querySelector("#patternList").addEventListener("change", enableRemoveBu
 document.querySelector("#saveButton").addEventListener("click", saveOptions);
 document.querySelector("#resetButton").addEventListener("click", reloadOptions);
 document.querySelector("#defaultsButton").addEventListener("click", loadDefaults);
+document.querySelector("#testUrlButton").addEventListener("click", testUrl);
+document.querySelector("#urlInput").addEventListener("keypress", testUrlViaKeyboard);

@@ -90,7 +90,20 @@ body {
     text-align: center;
 }
 
-.error-panel {
+.error-label {
     font-family: sans-serif;
+    min-height: 1.5em;
+}
+
+.test-panel {
+    align-items: center;
+    display: flex;
+    flex-flow: column nowrap;
     margin-bottom: 12px;
+    max-width: 52em;
+    outline: 2px solid;
+    border-radius: .5rem;
+    padding: 0px 8px;
+    row-gap: 8px;
+    width: 100%;
 }
