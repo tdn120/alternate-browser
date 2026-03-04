@@ -1,12 +1,3 @@
-/**
- * TODO:
- * - url tester
- * - full explanation
- * - avoid duplicates
- * - verify patterns
- * - sort patterns
- */
-
 async function initOptions() {
   await loadOptions(loadDefaultsOnError = true);
 }
