@@ -2,6 +2,7 @@
     "description": "Send configured urls to a different browser via Native Messaging",
     "manifest_version": 2,
     "name": "Alternate Browser",
+    "homepage_url": "https://github.com/tdn120/alternate-browser",
     "version": "0.1",
     "permissions": [
         "<all_urls>",
