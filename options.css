@@ -15,9 +15,15 @@ body {
     margin: 0 12px;
 }
 
+.title-text {
+    margin: 0 8px;
+    font: 500 large sans-serif;
+    text-wrap: nowrap;
+}
+
 .url-title a {
     text-decoration: none;
-    font-size: large;
+    font-size: medium;
     vertical-align: super;
 }
 
@@ -35,7 +41,6 @@ body {
     flex-flow: row nowrap;
     justify-content: center;
     width: 100%;
-    max-width: 64em;
 }
 
 .url-input__field {
@@ -52,8 +57,7 @@ body {
     display: flex;
     flex-flow: row nowrap;
     flex: 1;
-    align-items: flex-start;
-    max-width: 64em;
+    align-items: center;
     width: 100%;
     height: 100%;
 }
@@ -71,39 +75,51 @@ body {
 
 .pattern-list__action {
     margin-left: 4px;
-    margin-top: 48px;
 }
 
 .button-panel {
     display: flex;
-}
-
-.button-panel__action {
-    margin-right: 2em;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    width: 100%;
 }
 
 .btn--big {
-    width: 6em;
-    padding: 4px;
+    min-width: 6em;
+    text-wrap: nowrap;
+    padding: 4px 8px;
     line-height: 1.25;
     font-size: medium;
     text-align: center;
 }
 
-.error-label {
+.btn--small {
+    flex: 0;
+    padding: 2px 8px;
+    font-size: medium;
+}
+
+.status-panel {
+    align-self: flex-start;
+}
+
+.status-label {
+    align-self: center;
     font-family: sans-serif;
     min-height: 1.5em;
+    margin: 4px 8px;
+}
+
+hr.test-divider {
+    width: 100%;
+    border-top: 1px gray;
 }
 
 .test-panel {
     align-items: center;
+    justify-content: flex-start;
     display: flex;
-    flex-flow: column nowrap;
-    margin-bottom: 12px;
-    max-width: 52em;
-    outline: 2px solid;
-    border-radius: .5rem;
-    padding: 0px 8px;
-    row-gap: 8px;
+    flex-flow: row nowrap;
+    padding: 4px 8px;
     width: 100%;
 }

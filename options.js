@@ -16,13 +16,13 @@ async function loadOptions(loadDefaultsOnError) {
       loadDefaults();
     }
   } catch (error) {
-    let errorLabel = document.querySelector("#errorLabel");
-    if (errorLabel) {
+    let statusLabel = document.querySelector("#statusLabel");
+    if (statusLabel) {
       if (loadDefaultsOnError) {
         loadDefaults();
-        errorLabel.innerText = `Error loading settings: ${error.message}.  Using defaults.`;
+        statusLabel.innerText = `Error loading settings: ${error.message}.  Using defaults.`;
       } else {
-        errorLabel.innerText = `Error loading settings: ${error.message}`;
+        statusLabel.innerText = `Error loading settings: ${error.message}`;
       }
     } else {
       console.log("Unknown error loading options:", error);
@@ -43,7 +43,7 @@ async function saveOptions(event) {
     resetUI("save");
   } catch (error) {
     console.log(error);
-    document.querySelector("#errorLabel").innerText = `Error saving settings: ${error.message}`;
+    document.querySelector("#statusLabel").innerText = `Error saving settings: ${error.message}`;
   }
 }
 
@@ -72,20 +72,20 @@ function addPattern(event) {
   // validate url
   try {
     new URLPattern(newPattern); // throws if invalid pattern
-  } catch(error) {
-    document.querySelector("#errorLabel").innerText = `Invalid pattern! Please check the documentation.`;
+  } catch (error) {
+    document.querySelector("#statusLabel").innerText = `Invalid pattern! Please check the documentation.`;
     return;
   }
 
   const patternSelector = document.querySelector("#patternList");
   let before = null;
-  
+
   // find position in list
   for (i = 0; i < patternSelector.options.length; i++) {
     const nextItem = patternSelector.item(i).value;
     if (newPattern === nextItem) {
       return; // duplicate entry
-    } 
+    }
     if (newPattern < nextItem) {
       before = i;
       break;
@@ -126,7 +126,7 @@ function testUrlViaKeyboard(event) {
 function testUrl(event) {
   const patternSelector = document.querySelector("#patternList");
   const testUrl = document.querySelector("#urlInput").value;
-  const resultLabel = document.querySelector("#testResult");
+  const resultLabel = document.querySelector("#statusLabel");
   let matched = false;
   for (const pattern of patternSelector.options) {
     if (new URLPattern(pattern.value).test(testUrl)) {
@@ -150,7 +150,7 @@ function createOption(pattern) {
 
 function resetUI(buttonUsed) {
   document.querySelector("#saveButton").disabled = (buttonUsed == "save" || buttonUsed == "reset");
-  document.querySelector("#errorLabel").innerText = "";
+  document.querySelector("#statusLabel").innerText = "";
   enableRemoveButton();
 }
 
