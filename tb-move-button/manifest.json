@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "name": "Message Move Button",
+  "description": "Add a \"Move\" button to the message header toolbar",
+  "version": "1.0",
+  "author": "Thomas Nardone",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "messagemovebutton@thomasnardone.net",
+      "strict_min_version": "128.0"
+    }
+  },
+  "message_display_action": {
+    "default_icon": "images/move.svg",
+    "default_title": "Move",
+    "type": "menu"
+  },
+  "permissions": [
+    "accountsFolders",
+    "accountsRead",
+    "messagesRead",
+    "messagesMove",
+    "menus"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "icons": {
+    "64": "images/move.svg",
+    "32": "images/move.svg",
+    "16": "images/move.svg"
+  }
+}
